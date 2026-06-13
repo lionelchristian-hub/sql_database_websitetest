@@ -1,0 +1,16 @@
+OOptions -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # 1. Jika yang diminta adalah folder atau file yang benar-benar ada, jangan diubah
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule .* - [L]
+
+    # 2. (Opsional) Jika Anda menggunakan sistem routing ke index.php root
+    # RewriteRule ^index\.php$ - [L]
+    # RewriteCond %{REQUEST_FILENAME} !-f
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteRule . index.php [L]
+</IfModule>
